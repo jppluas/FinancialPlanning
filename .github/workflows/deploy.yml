@@ -23,7 +23,7 @@ jobs:
     # Paso 3: Instalación de dependencias
     - name: Install dependencies
       run: |
-        npm install
+        pnpm install
 
     # Paso 4: Configurar las variables de entorno usando GitHub Secrets
     - name: Set up environment variables
@@ -31,7 +31,7 @@ jobs:
 
     # Paso 5: Construir la aplicación
     - name: Build the application
-      run: npm run build  # O el comando de build de tu aplicación (en este caso, usando Vite)
+      run: pnpm run build  # O el comando de build de tu aplicación (en este caso, usando Vite)
 
     # Paso 6: Desplegar a GitHub Pages
     - name: Deploy to GitHub Pages
