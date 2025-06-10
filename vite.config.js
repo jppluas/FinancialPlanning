@@ -11,7 +11,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist', // Especifica la carpeta donde se generará el build
-    sourcemap: true, // Esto puede ayudarte a depurar el código generado
+    outDir: 'dist', // Especifica la carpeta de salida
   },
+  base: '/FinancialPlanning/', // Aquí se debe poner el nombre del repositorio en GitHub
 });
