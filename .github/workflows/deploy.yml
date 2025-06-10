@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - frontend # Rama que dispara el workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Paso 1: Checkout del código
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Paso 2: Configuración de Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'  # O la versión de Node.js que necesites
+
+    # Paso 3: Instalación de dependencias
+    - name: Install dependencies
+      run: |
+        npm install
+
+    # Paso 4: Configurar las variables de entorno usando GitHub Secrets
+    - name: Set up environment variables
+      run: echo "VITE_APP_URL=${{ secrets.VITE_APP_URL }}" >> .env
+
+    # Paso 5: Construir la aplicación
+    - name: Build the application
+      run: npm run build  # O el comando de build de tu aplicación (en este caso, usando Vite)
+
+    # Paso 6: Desplegar a GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.1.0
+      with:
+        branch: gh-pages  # La rama a la que deseas desplegar
+        folder: dist      # La carpeta de salida de tu build
+        token: ${{ secrets.GITHUB_TOKEN }}  # Token de autenticación de GitHub
