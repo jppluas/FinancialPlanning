@@ -25,7 +25,7 @@ const Dashboard = ({ businessData, financialData, recommendations, onReset }) =>
   const downloadReport = async () => {
     setDownloadingReport(true)
     try {
-      const response = await fetch(`${import.meta.env.VITE_APP_URL}/api/generate-report`, {
+      const response = await fetch(`https://financialplanning-production.up.railway.app/api/generate-report`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

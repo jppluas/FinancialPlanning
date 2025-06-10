@@ -36,9 +36,9 @@ const BusinessInfoForm = ({ onSubmit }) => {
     const fetchReferenceData = async () => {
       try {
         const [countriesRes, industriesRes, currenciesRes] = await Promise.all([
-          fetch(`${import.meta.env.VITE_APP_URL}/api/countries`),
-          fetch(`${import.meta.env.VITE_APP_URL}/api/industries`),
-          fetch(`${import.meta.env.VITE_APP_URL}/api/currencies`)
+          fetch(`https://financialplanning-production.up.railway.app/api/countries`),
+          fetch(`https://financialplanning-production.up.railway.app/api/industries`),
+          fetch(`https://financialplanning-production.up.railway.app/api/currencies`)
         ])
 
         const countriesData = await countriesRes.json()

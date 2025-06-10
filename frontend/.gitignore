@@ -36,3 +36,4 @@ build/
 
 # Others
 web.lock
+pnpm-lock.yaml
