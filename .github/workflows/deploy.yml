@@ -41,7 +41,7 @@ jobs:
     - name: Build the application
       run: pnpm run build
 
-    # Paso 8: Desplegar a GitHub Pages 
+    # Paso 8: Desplegar a GitHub Pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
