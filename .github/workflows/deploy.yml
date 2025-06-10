@@ -27,9 +27,6 @@ jobs:
     # Paso 4: Limpiar la caché de pnpm y eliminar node_modules y el lockfile
     - name: Clean up previous dependencies
       run: |
-        rm -rf node_modules        # Eliminar node_modules
-        rm package-lock.json       # Si usas npm, elimina el lockfile
-        rm pnpm-lock.yaml          # Si usas pnpm, elimina el lockfile
         pnpm store prune           # Limpiar la caché de pnpm
 
     # Paso 5: Instalar las dependencias nuevamente

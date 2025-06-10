@@ -33,6 +33,7 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+pnpm-lock.yaml
 
 # Logs
 *.log
