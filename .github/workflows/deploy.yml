@@ -20,20 +20,23 @@ jobs:
       with:
         node-version: '16'  # O la versión de Node.js que necesites
 
-    # Paso 3: Instalación de dependencias
-    - name: Install dependencies
-      run: |
-        pnpm install
+    # Paso 3: Instalar pnpm (agregar este paso para evitar el error "pnpm: command not found")
+    - name: Install pnpm
+      run: npm install -g pnpm  # Instalar pnpm globalmente
 
-    # Paso 4: Configurar las variables de entorno usando GitHub Secrets
+    # Paso 4: Instalación de dependencias
+    - name: Install dependencies
+      run: pnpm install
+
+    # Paso 5: Configurar las variables de entorno usando GitHub Secrets
     - name: Set up environment variables
       run: echo "VITE_APP_URL=${{ secrets.VITE_APP_URL }}" >> .env
 
-    # Paso 5: Construir la aplicación
+    # Paso 6: Construir la aplicación
     - name: Build the application
       run: pnpm run build  # O el comando de build de tu aplicación (en este caso, usando Vite)
 
-    # Paso 6: Desplegar a GitHub Pages
+    # Paso 7: Desplegar a GitHub Pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
