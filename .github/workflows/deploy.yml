@@ -14,7 +14,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Paso 2: Configuración de Node.js (actualiza la versión a v18 o superior)
+    # Paso 2: Configuración de Node.js
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
