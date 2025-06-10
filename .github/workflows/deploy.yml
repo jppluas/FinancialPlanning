@@ -39,14 +39,9 @@ jobs:
 
     # Paso 7: Construir la aplicación
     - name: Build the application
-      run: pnpm run build  # O el comando de build de tu aplicación (en este caso, usando Vite)
-    
-    # Paso 8: Asegurarse de que la rama gh-pages exista
-    - name: Ensure gh-pages branch exists
-      run: |
-        git fetch origin gh-pages || git checkout --orphan gh-pages
+      run: pnpm run build
 
-    # Paso 9: Desplegar a GitHub Pages 
+    # Paso 8: Desplegar a GitHub Pages 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
