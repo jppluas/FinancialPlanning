@@ -26,7 +26,7 @@ function App() {
     
     try {
       const combinedData = { ...businessData, ...data }
-      const response = await fetch(`${import.meta.env.VITE_APP_URL}/api/calculate-recommendations`, {
+      const response = await fetch(`https://financialplanning-production.up.railway.app/api/calculate-recommendations`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

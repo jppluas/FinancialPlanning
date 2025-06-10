@@ -27,21 +27,17 @@ jobs:
     # Paso 4: Limpiar la caché de pnpm y eliminar node_modules y el lockfile
     - name: Clean up previous dependencies
       run: |
-        pnpm store prune           # Limpiar la caché de pnpm
+        pnpm store prune         
 
     # Paso 5: Instalar las dependencias nuevamente
     - name: Install dependencies
       run: pnpm install
 
-    # Paso 6: Configurar las variables de entorno usando GitHub Secrets
-    - name: Set up environment variables
-      run: echo "VITE_APP_URL=${{ secrets.VITE_APP_URL }}" >> .env
-
-    # Paso 7: Construir la aplicación
+    # Paso 6: Construir la aplicación
     - name: Build the application
       run: pnpm run build
 
-    # Paso 8: Desplegar a GitHub Pages
+    # Paso 7: Desplegar a GitHub Pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
