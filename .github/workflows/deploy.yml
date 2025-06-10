@@ -14,22 +14,24 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Paso 2: Configuración de Node.js (actualiza la versión a v18 o superior)
+    # Paso 2: Configuración de Node.js
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'  # Cambié la versión a '18', que es compatible con pnpm
+        node-version: '18'  # Asegúrate de usar la versión correcta de Node.js
 
     # Paso 3: Instalar pnpm
     - name: Install pnpm
-      run: npm install -g pnpm  # Instalar pnpm globalmente
+      run: npm install -g pnpm
 
-    # Paso 4: Limpiar la caché de pnpm y eliminar node_modules y el lockfile
+    # Paso 4: Limpiar el caché de pnpm y eliminar node_modules y el lockfile
     - name: Clean up previous dependencies
       run: |
+        rm -rf node_modules        # Eliminar node_modules
+        rm pnpm-lock.yaml          # Eliminar el lockfile de pnpm
         pnpm store prune           # Limpiar la caché de pnpm
 
-    # Paso 5: Instalar las dependencias nuevamente
+    # Paso 5: Instalar las dependencias
     - name: Install dependencies
       run: pnpm install
 
@@ -39,11 +41,16 @@ jobs:
 
     # Paso 7: Construir la aplicación
     - name: Build the application
-      run: pnpm run build  # O el comando de build de tu aplicación (en este caso, usando Vite)
+      run: pnpm run build  # Asegúrate de que el directorio dist se cree
 
-    # Paso 8: Desplegar a GitHub Pages
+    # Paso 8: Crear la rama gh-pages si no existe
+    - name: Ensure gh-pages branch exists
+      run: |
+        git fetch origin gh-pages || git checkout --orphan gh-pages
+
+    # Paso 9: Desplegar a GitHub Pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
-        publish_dir: dist      # La carpeta de salida de tu build
+        publish_dir: dist  # El directorio donde se encuentran los archivos estáticos
         github_token: ${{ secrets.GITHUB_TOKEN }}  # Token de autenticación de GitHub
