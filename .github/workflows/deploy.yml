@@ -35,8 +35,7 @@ jobs:
 
     # Paso 6: Desplegar a GitHub Pages
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4.1.0
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        branch: gh-pages  # La rama a la que deseas desplegar
-        folder: dist      # La carpeta de salida de tu build
-        token: ${{ secrets.GITHUB_TOKEN }}  # Token de autenticación de GitHub
+        publish_dir: dist      # La carpeta de salida de tu build
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # Token de autenticación de GitHub
