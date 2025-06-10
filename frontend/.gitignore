@@ -1,0 +1,38 @@
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+
+# Dependency directories
+node_modules/
+dist/
+build/
+.vite/
+
+# Environment variables
+.env
+.env.*
+!.env.production.local
+!.env.staging.local
+!.env.development.local
+
+# macOS
+.DS_Store
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.prettierrc.local
+.eslintrc.local
+
+# Temporary files
+*.tmp
+*.bak
+
+# Others
+web.lock

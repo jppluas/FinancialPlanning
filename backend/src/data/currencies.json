@@ -1,0 +1,89 @@
+{
+  "currencies": {
+    "USD": {
+      "name": "US Dollar",
+      "symbol": "$",
+      "exchangeRates": {
+        "EUR": 0.85,
+        "GBP": 0.73,
+        "CAD": 1.25,
+        "MXN": 20.5,
+        "BRL": 5.2,
+        "JPY": 110.0,
+        "AUD": 1.35,
+        "CHF": 0.92
+      }
+    },
+    "EUR": {
+      "name": "Euro",
+      "symbol": "€",
+      "exchangeRates": {
+        "USD": 1.18,
+        "GBP": 0.86,
+        "CAD": 1.47,
+        "MXN": 24.1,
+        "BRL": 6.1,
+        "JPY": 129.4,
+        "AUD": 1.59,
+        "CHF": 1.08
+      }
+    },
+    "GBP": {
+      "name": "British Pound",
+      "symbol": "£",
+      "exchangeRates": {
+        "USD": 1.37,
+        "EUR": 1.16,
+        "CAD": 1.71,
+        "MXN": 28.1,
+        "BRL": 7.1,
+        "JPY": 150.7,
+        "AUD": 1.85,
+        "CHF": 1.26
+      }
+    },
+    "CAD": {
+      "name": "Canadian Dollar",
+      "symbol": "C$",
+      "exchangeRates": {
+        "USD": 0.80,
+        "EUR": 0.68,
+        "GBP": 0.58,
+        "MXN": 16.4,
+        "BRL": 4.2,
+        "JPY": 88.0,
+        "AUD": 1.08,
+        "CHF": 0.74
+      }
+    },
+    "MXN": {
+      "name": "Mexican Peso",
+      "symbol": "$",
+      "exchangeRates": {
+        "USD": 0.049,
+        "EUR": 0.041,
+        "GBP": 0.036,
+        "CAD": 0.061,
+        "BRL": 0.25,
+        "JPY": 5.37,
+        "AUD": 0.066,
+        "CHF": 0.045
+      }
+    },
+    "BRL": {
+      "name": "Brazilian Real",
+      "symbol": "R$",
+      "exchangeRates": {
+        "USD": 0.19,
+        "EUR": 0.16,
+        "GBP": 0.14,
+        "CAD": 0.24,
+        "MXN": 3.94,
+        "JPY": 21.2,
+        "AUD": 0.26,
+        "CHF": 0.18
+      }
+    }
+  }
+}
+
