@@ -18,7 +18,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'  # O la versión de Node.js que necesites
+        node-version: '18'  # O la versión de Node.js que necesites
 
     # Paso 3: Instalar pnpm (agregar este paso para evitar el error "pnpm: command not found")
     - name: Install pnpm
