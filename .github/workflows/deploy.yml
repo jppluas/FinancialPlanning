@@ -46,7 +46,7 @@ jobs:
       run: |
         git fetch origin gh-pages || git checkout --orphan gh-pages
 
-    # Paso 9: Desplegar a GitHub Pages
+    # Paso 9: Desplegar a GitHub Pages 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
