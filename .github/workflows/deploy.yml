@@ -14,29 +14,37 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Paso 2: Configuración de Node.js
+    # Paso 2: Configuración de Node.js (actualiza la versión a v18 o superior)
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'  # O la versión de Node.js que necesites
+        node-version: '18'  # Cambié la versión a '18', que es compatible con pnpm
 
-    # Paso 3: Instalar pnpm (agregar este paso para evitar el error "pnpm: command not found")
+    # Paso 3: Instalar pnpm
     - name: Install pnpm
       run: npm install -g pnpm  # Instalar pnpm globalmente
 
-    # Paso 4: Instalación de dependencias
+    # Paso 4: Limpiar la caché de pnpm y eliminar node_modules y el lockfile
+    - name: Clean up previous dependencies
+      run: |
+        rm -rf node_modules        # Eliminar node_modules
+        rm package-lock.json       # Si usas npm, elimina el lockfile
+        rm pnpm-lock.yaml          # Si usas pnpm, elimina el lockfile
+        pnpm store prune           # Limpiar la caché de pnpm
+
+    # Paso 5: Instalar las dependencias nuevamente
     - name: Install dependencies
       run: pnpm install
 
-    # Paso 5: Configurar las variables de entorno usando GitHub Secrets
+    # Paso 6: Configurar las variables de entorno usando GitHub Secrets
     - name: Set up environment variables
       run: echo "VITE_APP_URL=${{ secrets.VITE_APP_URL }}" >> .env
 
-    # Paso 6: Construir la aplicación
+    # Paso 7: Construir la aplicación
     - name: Build the application
       run: pnpm run build  # O el comando de build de tu aplicación (en este caso, usando Vite)
 
-    # Paso 7: Desplegar a GitHub Pages
+    # Paso 8: Desplegar a GitHub Pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
