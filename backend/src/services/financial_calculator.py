@@ -194,6 +194,8 @@ class FinancialCalculator:
             'debtToRevenueRatio': round(total_debt / (business_data.get('monthlyRevenue', 1) * 12), 2)
         }
     
+    TAX_ADVANTAGES_VARY = "Tax advantages vary by country"
+
     def calculate_retirement_planning(self, business_data: Dict[str, Any]) -> Dict[str, Any]:
         """Calculate retirement planning recommendations"""
         employee_count = business_data.get('employeeCount', 0)
@@ -205,11 +207,13 @@ class FinancialCalculator:
             if country == 'US':
                 recommended_plan = "Solo 401(k)"
                 max_contribution = 58000  # 2023 limit
-                tax_benefits = "Tax-deferred growth and deductible contributions"
+                tax_benefits = (
+                    "Tax-deferred growth and deductible contributions"
+                )
             else:
                 recommended_plan = "Individual Retirement Account"
                 max_contribution = 6000
-                tax_benefits = "Tax advantages vary by country"
+                tax_benefits = self.TAX_ADVANTAGES_VARY
         elif employee_count <= 25:
             if country == 'US':
                 recommended_plan = "SEP IRA"
@@ -218,7 +222,7 @@ class FinancialCalculator:
             else:
                 recommended_plan = "Small Business Pension Plan"
                 max_contribution = monthly_revenue * 12 * 0.15
-                tax_benefits = "Tax advantages vary by country"
+                tax_benefits = self.TAX_ADVANTAGES_VARY
         else:
             if country == 'US':
                 recommended_plan = "401(k) Plan"
@@ -227,11 +231,11 @@ class FinancialCalculator:
             else:
                 recommended_plan = "Corporate Pension Plan"
                 max_contribution = monthly_revenue * 12 * 0.20
-                tax_benefits = "Tax advantages vary by country"
-        
+                tax_benefits = self.TAX_ADVANTAGES_VARY
+                       
         # Calculate recommended contribution (10-15% of revenue)
-        recommended_contribution = min(max_contribution, monthly_revenue * 12 * 0.12)
-        
+        annual_recommended = monthly_revenue * 12 * 0.12
+        recommended_contribution = min(max_contribution, annual_recommended)
         return {
             'recommendedPlan': recommended_plan,
             'maxContribution': round(max_contribution, 2),
