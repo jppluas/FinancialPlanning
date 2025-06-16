@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input.jsx'
 import { Label } from '@/components/ui/label.jsx'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
+import PropTypes from 'prop-types'
 
 const BusinessInfoForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -318,6 +319,9 @@ const BusinessInfoForm = ({ onSubmit }) => {
       </CardContent>
     </Card>
   )
+}
+BusinessInfoForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default BusinessInfoForm
