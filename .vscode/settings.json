@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "jppluas",
+        "projectKey": "jppluas_FinancialPlanning"
+    }
+}
